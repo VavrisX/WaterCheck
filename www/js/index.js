@@ -59,7 +59,7 @@ function createDialog() {
 function dialogDismissed(buttonIndex) {
 	
 	if(buttonIndex==2){ new Toast({content: "Go get a cup, stay hydrated!", duration: 3000});
-          createNotification()
+          createNotification();
                       }
                        
    	else if(buttonIndex==1){ new Toast({content: 'Well done, stay hydrated!', duration: 3000});
@@ -84,14 +84,14 @@ function createNotification() {
     	id: 		1,
         title: 		"Water Check",
         message: 	"Go drink some",
-        date: 		notificationTime, 
-        badge: 		notification_count++
+        date: 		notificationTime 
+        
    	});
-    cordova.plugins.notification.local.on("click", createDialog);
-    cordova.plugins.notification.local.on("clear", createNotification);
+   cordova.plugins.notification.local.on("click", createDialog);
+   /* cordova.plugins.notification.local.on("clear", createNotification);
     cordova.plugins.notification.local.on("clearall", createNotification);
     cordova.plugins.notification.local.on("cancel", createNotification);
-    cordova.plugins.notification.local.on("cancelall", createNotification);
+    cordova.plugins.notification.local.on("cancelall", createNotification); */
    // cordova.plugins.notification.local.on("trigger", createDialog);
     
 }
