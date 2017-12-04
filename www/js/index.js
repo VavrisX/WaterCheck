@@ -1,5 +1,6 @@
 var notification_count=0;
 var name;
+var nameExist = 0;
 
 $(document).on('pageinit', function() {
 
@@ -39,7 +40,11 @@ function createDialog() {
 
 	//phonegap supports native dialog boxes.
 	//here's a simple example
-    name = prompt("What is you name?");  
+    
+    if(nameExist == 0){
+    name = prompt("What is you name?");
+        nameExist=1;
+    }
 	navigator.notification.confirm(
     	"Have you drink water in the past hour " + name + "?",  // message
         dialogDismissed,         // callback
@@ -83,10 +88,10 @@ function createNotification() {
         badge: 		notification_count++
    	});
     cordova.plugins.notification.local.on("click", createDialog);
-    cordova.plugins.notification.local.on("clear", createDialog);
-    cordova.plugins.notification.local.on("clearall", createDialog);
-    cordova.plugins.notification.local.on("cancel", createDialog);
-    cordova.plugins.notification.local.on("cancelall", createDialog);
+    cordova.plugins.notification.local.on("clear", createNotification);
+    cordova.plugins.notification.local.on("clearall", createNotification);
+    cordova.plugins.notification.local.on("cancel", createNotification);
+    cordova.plugins.notification.local.on("cancelall", createNotification);
    // cordova.plugins.notification.local.on("trigger", createDialog);
     
 }
