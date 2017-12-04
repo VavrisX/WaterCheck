@@ -83,15 +83,15 @@ function createNotification() {
     cordova.plugins.notification.local.schedule({ 
     	id: 		1,
         title: 		"Water Check",
-        message: 	"Go drink some",
+        message: 	"Drink water!",
         date: 		notificationTime 
         
    	});
    cordova.plugins.notification.local.on("click", createDialog);
-   /* cordova.plugins.notification.local.on("clear", createNotification);
+   cordova.plugins.notification.local.on("clear", createNotification);
     cordova.plugins.notification.local.on("clearall", createNotification);
     cordova.plugins.notification.local.on("cancel", createNotification);
-    cordova.plugins.notification.local.on("cancelall", createNotification); */
+    cordova.plugins.notification.local.on("cancelall", createNotification);
    // cordova.plugins.notification.local.on("trigger", createDialog);
     
 }
