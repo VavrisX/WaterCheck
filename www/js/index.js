@@ -91,7 +91,7 @@ function createNotification() {
         
    	});
    cordova.plugins.notification.local.on("click", createDialog);
-   cordova.plugins.notification.local.on("clear", createNotification);
+   //cordova.plugins.notification.local.on("clear", createNotification);
 
    // cordova.plugins.notification.local.on("trigger", createDialog);
     
