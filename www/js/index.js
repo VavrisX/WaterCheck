@@ -1,6 +1,7 @@
 var notification_count=0;
 var name;
 var nameExist = 0;
+var dialogueCheck = 0;
 
 $(document).on('pageinit', function() {
 
@@ -40,10 +41,10 @@ function createDialog() {
 
 	//phonegap supports native dialog boxes.
 	//here's a simple example
-    
+    if(dialogueCheck == nameExist){
     if(nameExist == 0){
     name = prompt("What is you name?");
-        nameExist=1;
+        
     }
 	navigator.notification.confirm(
     	"Have you drink water in the past hour " + name + "?",  // message
@@ -51,18 +52,20 @@ function createDialog() {
         'Water time!',            // title
         ['Yes!', "No"]                  // buttons
     );
-
+nameExist++;
 }
-        	
+}
         	
         	
 function dialogDismissed(buttonIndex) {
 	
 	if(buttonIndex==2){ new Toast({content: "Go get a cup, stay hydrated!", duration: 3000});
+          dialogueCheck++;             
           createNotification();
                       }
                        
    	else if(buttonIndex==1){ new Toast({content: 'Well done, stay hydrated!', duration: 3000});
+        dialogueCheck++;                    
         createNotification();  }
 }
 
@@ -83,7 +86,7 @@ function createNotification() {
     cordova.plugins.notification.local.schedule({ 
     	id: 		1,
         title: 		"Water Check",
-        message: 	"Drink water!",
+        message: 	"Drink water " + name + "!",
         date: 		notificationTime 
         
    	});
